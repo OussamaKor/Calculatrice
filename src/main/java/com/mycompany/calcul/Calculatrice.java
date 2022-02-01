@@ -23,8 +23,8 @@ public class Calculatrice extends  JFrame {
     JTextField Fld = new JTextField("") ;
     JButton btn1 = new JButton("+") ;
     JButton btn2 = new JButton("-") ;
-    JButton btn3 = new JButton("/") ;
-    JButton btn4 = new JButton("*") ;
+    JButton btn4 = new JButton("/") ;
+    JButton btn3 = new JButton("*") ;
     JButton btn5 = new JButton("ClearAll") ;
     JButton btn6 = new JButton("ENTER") ;
     JButton btn10 = new JButton("+/-") ;
@@ -211,9 +211,14 @@ public class Calculatrice extends  JFrame {
             }
         });
     }
-    private void btn1ActionPerformed(ActionEvent evt) {                                          
+    private void btn1ActionPerformed(ActionEvent evt) {  
+        int l=(Fld.getText()).length() ;
+        String st = Fld.getText() ;
+        String[] words = st.split(",");
+        if (words.length== 2)
+            st=words[0]+"."+words[1] ;
         // TODO add your handling code here:
-        first = Double.parseDouble(Fld.getText()) ;
+        first = Double.parseDouble(st) ;
         Fld.setText("");
         operation = "+" ;
         
@@ -221,7 +226,12 @@ public class Calculatrice extends  JFrame {
     
     private void btn2ActionPerformed(ActionEvent evt) {                                          
         // TODO add your handling code here:
-        first = Double.parseDouble(Fld.getText()) ;
+        int l=(Fld.getText()).length() ;
+        String st = Fld.getText() ;
+        String[] words = st.split(",");
+        if (words.length== 2)
+            st=words[0]+"."+words[1] ;
+        first = Double.parseDouble(st) ;
         Fld.setText("");
         operation = "-" ;
         
@@ -229,7 +239,12 @@ public class Calculatrice extends  JFrame {
     
     private void btn3ActionPerformed(ActionEvent evt) {                                          
         // TODO add your handling code here:
-        first = Double.parseDouble(Fld.getText()) ;
+        int l=(Fld.getText()).length() ;
+        String st = Fld.getText() ;
+        String[] words = st.split(",");
+        if (words.length== 2)
+            st=words[0]+"."+words[1] ;
+        first = Double.parseDouble(st) ;
         Fld.setText("");
         operation = "*" ;
         
@@ -237,7 +252,12 @@ public class Calculatrice extends  JFrame {
     
     private void btn4ActionPerformed(ActionEvent evt) {                                          
         // TODO add your handling code here:
-        first = Double.parseDouble(Fld.getText()) ;
+        int l=(Fld.getText()).length() ;
+        String st = Fld.getText() ;
+        String[] words = st.split(",");
+        if (words.length== 2)
+            st=words[0]+"."+words[1] ;
+        first = Double.parseDouble(st) ;
         Fld.setText("");
         operation = "/" ;
         
@@ -250,19 +270,19 @@ public class Calculatrice extends  JFrame {
         if (operation == "+")
         {
             result = first + second ;
-            answer= String.format("%.0f",result) ;
+            answer= String.format("%.2f",result) ;
             Fld.setText(answer) ;
         }
         else if (operation == "-")
         {
             result = first - second ;
-            answer= String.format("%.0f",result) ;
+            answer= String.format("%.2f",result) ;
             Fld.setText(answer) ;
         }
         else if (operation == "*")
         {
             result = first * second ;
-            answer= String.format("%.0f",result) ;
+            answer= String.format("%.2f",result) ;
             Fld.setText(answer) ;
         }
         else if (operation == "/")
@@ -275,8 +295,9 @@ public class Calculatrice extends  JFrame {
             }
             else
             {
-                JFrame f1= new JFrame("New Game") ;
-                JOptionPane.showMessageDialog(f1,"on ne peut pas diviser par 0","Division",JOptionPane.INFORMATION_MESSAGE) ;
+
+                
+                JOptionPane.showMessageDialog(this,"on ne peut pas diviser par 0","Division",JOptionPane.INFORMATION_MESSAGE) ;
             }
             
         }
